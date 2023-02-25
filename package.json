@@ -1,0 +1,28 @@
+{
+  "name": "qajs-2022-11-dostybayeva-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./src/*.e2e.spec.js --timeout 30000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dostybayeva/qajs-2022-11-dostybayeva-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dostybayeva/qajs-2022-11-dostybayeva-ui/issues"
+  },
+  "homepage": "https://github.com/dostybayeva/qajs-2022-11-dostybayeva-ui#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.31.1"
+  },
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "playwright": "^1.25.1"
+  }
+}
