@@ -2,27 +2,27 @@ const playwright = require('playwright');
 const chai = require('chai');
 const expect = chai.expect;
 const { describe, it, beforeEach, afterEach } = require('mocha');
+const LoginPage = require('../pages/LoginPage');
 
 let page, browser, context
 
-describe('vikunja authorization tests', () => {
+describe.only('vikunja authorization tests', () => {
     beforeEach(async function () {
-        browser = await playwright.chromium.launch({
-            headless: true,
-            // slowMo: 500,
-        });
-
-        context = await browser.newContext();
-        page = await context.newPage();
-
-        await page.goto('https://try.vikunja.io/login');
+        // browser = await playwright.chromium.launch({
+        //     headless: false,
+        //     // slowMo: 500,
+        // });
+        //
+        // context = await browser.newContext();
+        // page = await context.newPage();
+        await LoginPage.visit();
     });
 
     afterEach(async function () {
         await browser.close();
     });
 
-    it('should successfully authenticate', async () => {
+    it.only('should successfully authenticate', async () => {
         await page.locator('#username').fill('dostybayeva');
         await page.locator('#password').fill('zabyl123');
         await page.locator('#loginform .button').click();

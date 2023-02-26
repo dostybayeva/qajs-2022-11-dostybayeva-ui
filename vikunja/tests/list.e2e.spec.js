@@ -5,11 +5,11 @@ const { describe, it, beforeEach, afterEach } = require('mocha');
 
 let page, browser, context
 
-describe.only('vikunja authorization tests', () => {
+describe('vikunja list tests', () => {
     beforeEach(async function () {
         browser = await playwright.chromium.launch({
-            headless: true,
-            // slowMo: 500,
+            headless: false,
+            slowMo: 500,
         });
 
         context = await browser.newContext();
@@ -25,9 +25,19 @@ describe.only('vikunja authorization tests', () => {
         await browser.close();
     });
 
-    it.only('should successfully create new list from namespaces page', async () => {
+    it('should successfully create new first list from namespaces page', async () => {
         await page.goto('https://try.vikunja.io/namespaces');
-        await page.locator('.namespace .base-button').click()
+        await page.locator('.namespace .base-button').click();
+        await page.locator('[name="listTitle"]').fill('list1');
+        await page.locator('.card-footer .ml-2').click();
+
+        // await page.locator('.list-card').click();
+        // вынести в after
+        await page.locator('.list-title-button .fa-ellipsis').click();
+        await page.locator('.has-text-danger').click();
+        await page.locator('.actions button').nth(1).click();
+
+
     });
 
 });
